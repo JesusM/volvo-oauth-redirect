@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Redirecting…</title>
+    <script>
+      // Lee los parámetros ?code=XYZ&state=ABC
+      const query = window.location.search;
+      const redirectUri = `com.jesusm.volcontroller://oauth2redirect${query}`;
+      window.location.replace(redirectUri);
+    </script>
+  </head>
+  <body>
+    <p>Redirecting…</p>
+  </body>
+</html>
