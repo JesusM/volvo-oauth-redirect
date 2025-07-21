@@ -4,16 +4,18 @@
   <meta charset="UTF-8" />
   <title>Redirecting to app…</title>
   <script>
-    // Parse query parameters from URL
     const params = new URLSearchParams(window.location.search);
     const code = params.get("code");
     const state = params.get("state");
 
-    // Construct the custom URI for your Android app
-    const redirectUri = `com.jesusm.volcontroller://oauth2redirect?code=${encodeURIComponent(code)}&state=${encodeURIComponent(state)}`;
-
-    // Redirect to the app
-    window.location.replace(redirectUri);
+    if (code && state) {
+      const redirectUri =
+        `com.jesusm.volcontroller://oauth2redirect?` +
+        `code=${encodeURIComponent(code)}&state=${encodeURIComponent(state)}`;
+      window.location.replace(redirectUri);
+    } else {
+      document.body.innerHTML = "<p>Missing parameters in redirect URL.</p>";
+    }
   </script>
 </head>
 <body>
